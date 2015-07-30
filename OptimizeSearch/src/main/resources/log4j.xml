@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <root> 
+        <priority value ="INFO" /> 
+        <appender-ref ref="WordSearcher" /> 
+    </root>
+
+    <appender name="WordSearcher" class="org.apache.log4j.DailyRollingFileAppender"> 
+        <param name="File" value="/tmp/WordSearcher.log"/>
+        <param name="encoding" value="UTF-8"/> 
+        <param name="Threshold" value="INFO"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout"> 
+            <param name="ConversionPattern" value="%d (%t) %p [%c] - %m%n"/> 
+        </layout> 
+    </appender> 
+
+    <logger name="com.anish.search">
+        <level value="INFO" />
+        <appender-ref ref="WordSearcher"/>
+    </logger>
+
+</log4j:configuration>
